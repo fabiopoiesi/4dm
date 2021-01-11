@@ -8,7 +8,7 @@ Coming soon ... (paper under review)
 [Download (zip)](https://drive.google.com/file/d/1AvkGph7TXxsxoqQXEVZErHHllutC4Ncc/view?usp=sharing)
 
 This is the 4DM dataset that involves six people recording with their mobiles a person acting table tennis in an outdoor setting.
-The 4DM dataset includes cluttered backgrounds, cast shadows and people appearing in each other's view, thus becoming likely distractors for object detection and human pose estimation.
+The 4DM dataset is characterised by cluttered backgrounds, cast shadows and people appearing in each other's view, thus becoming likely distractors for object detection and human pose estimation.
 
 4DM is composed of three sequences: 
 - 4DM-Easy: all mobiles are stably held by people during capture 
