@@ -12,4 +12,4 @@ The 4DM dataset includes cluttered backgrounds, cast shadows and people appearin
 - 4DM-Medium: three out of six mobiles are stably held, the others undergo motion
 - 4DM-Hard: all mobiles undergo motion
 
-The host mobile generates triggers at 10Hz. Frames have a resolution of 640x480 and an average size of 160KB. The latency between mobiles and the Relay Server was about 5ms.
+The host mobile generates triggers at 10Hz. Frames have a resolution of 640x480 and an average size of about 160KB. The latency between mobiles and the Relay Server was about 5ms.
