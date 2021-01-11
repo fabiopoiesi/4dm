@@ -3,7 +3,7 @@ Coming soon ... (paper under review)
 
 ## The 4DM dataset
 
-<p align="center"><img src="assets/4dm_sample.png" width="500"></p>
+<p align="center"><img src="assets/4dm_sample.png" width="1000"></p>
 
 [Download (zip)](https://drive.google.com/file/d/1AvkGph7TXxsxoqQXEVZErHHllutC4Ncc/view?usp=sharing)
 
