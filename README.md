@@ -2,6 +2,9 @@
 Coming soon ... (paper under review)
 
 ## The 4DM dataset
+
+<p align="center"><img src="assets/4dm_sample.png" width="500"></p>
+
 [Download (zip)](https://drive.google.com/file/d/1AvkGph7TXxsxoqQXEVZErHHllutC4Ncc/view?usp=sharing)
 
 This is the 4DM dataset that involves six people recording a person acting table tennis with their mobiles in an outdoor setting.
