@@ -19,3 +19,7 @@ The 4DM dataset is characterised by cluttered backgrounds, cast shadows and peop
 - 4DM-Hard: all mobiles undergo motion
 
 The host mobile generates triggers at 10Hz. Frames have a resolution of 640x480 and an average size of about 160KB. The latency between mobiles and the Relay Server was about 5ms.
+
+## Acknowledgements
+
+This research has received funding from the Fondazione [CARITRO - Ricerca e Sviluppo](https://www.fondazionecaritro.it/) programme 2018-2020.
