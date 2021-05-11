@@ -2,6 +2,16 @@
 
 ## Source code
 
+### Components
+
+The 4DFY project can be divided into three main components:
+
+- Android application: You can find the code and the instruction to compile it on the ```app``` folder
+- Frame processing server: Code and installation instruction can be found in ```server```
+
+- Preprocessing examples: You can find 
+
+
 Coming soon ... (paper under review)
 
 ## The 4DM dataset

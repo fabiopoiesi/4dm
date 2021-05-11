@@ -1,0 +1,10 @@
+cc_test(
+    name = "performanceServer_test",
+    srcs = glob(["*.cpp"]),
+    deps = [
+        "@googletest//:gtest_main",
+        "//3rdparty:boost_chrono",
+        "//3rdparty:boost_thread",
+        "//src/performanceServer:TCPServer",
+    ],
+)

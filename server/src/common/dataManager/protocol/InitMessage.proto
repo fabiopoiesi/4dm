@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package dataManager.protocol;
+
+message InitMessage {
+	string applicationID = 1;
+	oneof is_host_or_client {
+		string streamID = 2;
+		int32 clients = 3;
+	}
+	string phoneId = 4;
+	enum ContentCodec {
+		MJPEG = 0;
+		H264 = 1;
+		H265 = 2;
+		VP9 = 3;
+		AV0 = 4;
+	}
+	ContentCodec contentCodec = 5;
+	bytes initBytes = 6;
+	bytes initAdditionalData = 7;
+	bool rejoin = 8;
+}
+
+message InitMessageResponse {
+	string streamID = 1;
+}

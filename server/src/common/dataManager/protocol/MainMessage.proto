@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package dataManager.protocol;
+
+message MainMessage {
+	enum Type {
+		INIT = 0;
+		DATA = 1;
+		END = 2;
+	}
+	Type type = 1;
+	bytes info = 2;
+}
