@@ -15,6 +15,7 @@
 
 #include "boost/chrono.hpp"
 #include "boost/thread/thread.hpp"
+#include "boost/asio.hpp"
 #include "src/server/dataManagerServer/DataManagerTCPServer.hpp"
 #include "boost/filesystem.hpp"
 #include "boost/dll.hpp"
@@ -23,9 +24,6 @@
 
 #include "opencv2/core.hpp"
 #include "opencv2/imgcodecs.hpp"
-
-#include "muduo/net/EventLoop.h"
-#include "muduo/net/InetAddress.h"
 
 #define PORT 5960
 
@@ -49,11 +47,11 @@ bool serverRun = false;
 std::atomic<int> activeSendThread(0);
 
 int dataManagerServerThreadFunction() {
-	muduo::net::EventLoop loop;
-	muduo::net::InetAddress listenAddr(PORT);
-	dataManagerServerInstance = new dataManagerServer::DataManagerTCPServer(&loop, listenAddr);
+	boost::asio::io_context io_context;
+	dataManagerServerInstance = new dataManagerServer::DataManagerTCPServer(
+			io_context, PORT);
 	serverRun = true;
-	loop.loop();
+	io_context.run();
 	return 0;
 }
 
@@ -141,9 +139,6 @@ TEST(DataManagerServer, TestDataManagerCorrectness) {
 		char* additionalData = new char[10]{'{','}'};
 
 		ImageSending::sendImage(sessionIdentifierClient, 0, y_buffer, uv_buffer, width, height, additionalData, 10);
-
-		std::cout << "Host sending" << std::endl;
-
 		ImageSending::sendImage(sessionIdentifierHost, 0, y_buffer, uv_buffer, width, height, additionalData, 10);
 
 		delete[] additionalData;
@@ -159,8 +154,7 @@ TEST(DataManagerServer, TestDataManagerCorrectness) {
 
 		// Wait for connection close
 		maxTry = 100;
-		while (maxTry >= 0 && (!ImageSending::isSendComplete(sessionIdentifierClient) || !ImageSending::isSendComplete(sessionIdentifierHost))) {
-			std::cout << "Wait sending complete" << std::endl;
+		while (maxTry >= 0 && !ImageSending::isSendComplete(sessionIdentifierClient) && !ImageSending::isSendComplete(sessionIdentifierHost)) {
 			boost::this_thread::sleep_for(boost::chrono::milliseconds(100));
 			maxTry--;
 		}

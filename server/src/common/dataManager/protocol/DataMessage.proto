@@ -6,14 +6,4 @@ message DataMessage {
 	uint64 frameId = 1;
 	bytes additionalData = 2;
 	bytes data = 3;
-	bytes dataHash = 4;
-}
-
-message DataMessageResponse {
-	enum Status {
-		TOO_LARGE_MESSAGE = 10;
-		SUCCESS = 0;
-		RETRANSMIT = 1;
-	}
-	Status status = 1;
 }

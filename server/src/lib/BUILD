@@ -36,7 +36,6 @@ cc_library(
         "//src/common/dataManager/protocol:data_message_cc_proto",
         "//src/common/dataManager/protocol:end_message_cc_proto",
         "@moodycamel_readerwriterqueue//:readerwriterqueue",
-        "//src/common/dataManager:md5"
     ],
     copts = [
     	"-std=c++17",

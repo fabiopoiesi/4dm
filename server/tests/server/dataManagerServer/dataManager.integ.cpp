@@ -41,11 +41,11 @@ dataManagerServer::DataManagerTCPServer* dataManagerServerInstance;
 bool serverRun = false;
 
 int dataManagerServerThreadFunction() {
-	muduo::net::EventLoop loop;
-	muduo::net::InetAddress listenAddr(PORT);
-	dataManagerServerInstance = new dataManagerServer::DataManagerTCPServer(&loop, listenAddr);
+	boost::asio::io_context io_context;
+	dataManagerServerInstance = new dataManagerServer::DataManagerTCPServer(
+			io_context, PORT);
 	serverRun = true;
-	loop.loop();
+	io_context.run();
 	return 0;
 }
 

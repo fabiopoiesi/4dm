@@ -37,11 +37,16 @@ git_repository(
 )
 
 http_archive(
-    name = "com_google_protobuf",
-    sha256 = "9510dd2afc29e7245e9e884336f848c8a6600a14ae726adb6befdb4f786f0be2",
-    strip_prefix = "protobuf-3.6.1.3",
-    urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.6.1.3.zip"],
+    name = "rules_proto",
+    sha256 = "2a20fd8af3cad3fbab9fd3aec4a137621e0c31f858af213a7ae0f997723fc4a9",
+    strip_prefix = "rules_proto-a0761ed101b939e19d83b2da5f59034bffc19c12",
+    urls = [
+        "https://github.com/bazelbuild/rules_proto/archive/a0761ed101b939e19d83b2da5f59034bffc19c12.tar.gz",
+    ],
 )
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+rules_proto_dependencies()
+rules_proto_toolchains()
 
 http_archive(
     name = "opencv",
@@ -73,17 +78,24 @@ http_archive(
     strip_prefix = "abseil-cpp-master",
 )
 
-http_archive(
+# muduo
+git_repository(
     name = "muduo",
-    strip_prefix = "muduo-master",
-    urls = ["https://github.com/chenshuo/muduo/archive/master.zip"],
+    commit = "8f5856ba960bf498afc98a7a79a5454ef03d32a4",
+    remote = "https://github.com/mbortolon97/muduo",
+)
+
+http_archive(
+    name = "rules_python",
+    sha256 = "778197e26c5fbeb07ac2a2c5ae405b30f6cb7ad1f5510ea6fdac03bded96cc6f",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_python/releases/download/0.2.0/rules_python-0.2.0.tar.gz",
+        "https://github.com/bazelbuild/rules_python/releases/download/0.2.0/rules_python-0.2.0.tar.gz",
+    ],
 )
 
 # Docker
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-# Download the rules_docker repository at release v0.7.0
 http_archive(
     name = "io_bazel_rules_docker",
     sha256 = "59d5b42ac315e7eadffa944e86e90c2990110a1c8075f1cd145f487e999d22b3",
@@ -126,21 +138,31 @@ android_ndk_repository(
     name = "androidndk", # Required. Name *must* be "androidndk".
 )
 
-#http_archive(
-#    name = "build_stack_rules_proto",
-#    urls = ["https://github.com/stackb/rules_proto/archive/91cbae9bd71a9c51406014b8b3c931652fb6e660.tar.gz"],
-#    sha256 = "5474d1b83e24ec1a6db371033a27ff7aff412f2b23abba86fedd902330b61ee6",
-#    strip_prefix = "rules_proto-91cbae9bd71a9c51406014b8b3c931652fb6e660",
-#)
+git_repository(
+    name = "com_github_nelhage_rules_boost",
+    commit = "1e3a69bf2d5cd10c34b74f066054cd335d033d71",
+    remote = "https://github.com/nelhage/rules_boost",
+    shallow_since = "1591047380 -0700",
+)
 
-#load("@build_stack_rules_proto//cpp:deps.bzl", "cpp_proto_compile")
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+boost_deps()
 
-#cpp_proto_compile()
+# http_archive(
+#     name = "build_stack_rules_proto",
+#     urls = ["https://github.com/stackb/rules_proto/archive/91cbae9bd71a9c51406014b8b3c931652fb6e660.tar.gz"],
+#     sha256 = "5474d1b83e24ec1a6db371033a27ff7aff412f2b23abba86fedd902330b61ee6",
+#     strip_prefix = "rules_proto-91cbae9bd71a9c51406014b8b3c931652fb6e660",
+# )
 
-#http_archive(
-#    name = "boost",
-#    build_file = "boost.BUILD",
-#    sha256 = "430ae8354789de4fd19ee52f3b1f739e1fba576f0aded0897c3c2bc00fb38778",
-#    strip_prefix = "boost_1_70_0",
-#    url = "https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2",
-#)
+# load("@build_stack_rules_proto//cpp:deps.bzl", "cpp_proto_compile")
+
+# cpp_proto_compile()
+
+# http_archive(
+#     name = "boost",
+#     build_file = "boost.BUILD",
+#     sha256 = "430ae8354789de4fd19ee52f3b1f739e1fba576f0aded0897c3c2bc00fb38778",
+#     strip_prefix = "boost_1_70_0",
+#     url = "https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2",
+# )

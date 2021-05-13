@@ -16,7 +16,6 @@ cc_library(
 		"//src/common/dataManager/protocol:init_message_cc_proto",
 		"//src/common/dataManager/protocol:data_message_cc_proto",
 		"//src/common/dataManager/protocol:end_message_cc_proto",
-		"//src/common/dataManager:md5",
 	],
 )
 
@@ -26,7 +25,11 @@ cc_library(
     hdrs = ["TCPConnection.hpp"],
     visibility = ["//visibility:private"],
     deps = [
-    	"@muduo//muduo/net",
+    	"//3rdparty:boost_chrono",
+    	"//3rdparty:boost_asio",
+    	"//3rdparty:boost_shared_ptr",
+    	"//3rdparty:boost_bind",
+    	"//3rdparty:boost_enable_shared_from_this",
     	":message_decapsulator",
     ],
 )
@@ -38,7 +41,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         ":TCPConnection",
-        "@muduo//muduo/net",
-        "//src/server/dataManagerServer/session:sessions_manager",
+        "//3rdparty:boost_asio",
+        "//3rdparty:boost_thread",
     ],
 )

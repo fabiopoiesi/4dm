@@ -1,7 +1,6 @@
-// #include "TCPConnection.hpp"
+#include "TCPConnection.hpp"
 
 #include <chrono>
-#include <thread>
 
 #include "DataManagerTCPServer.hpp"
 #include "session/SessionsManager.hpp"
@@ -10,17 +9,22 @@
 #define WAIT_INTERVAL 50
 #define MESSAGE_INTERVAL 2000
 
-dataManagerServer::DataManagerTCPServer::DataManagerTCPServer(muduo::net::EventLoop* loop, const muduo::net::InetAddress& listenAddr)
-	: loop_(loop), server_(loop, listenAddr, "DataManager")
+using boost::asio::ip::tcp;
+
+dataManagerServer::DataManagerTCPServer::DataManagerTCPServer(boost::asio::io_context& io_context, uint16_t port)
+		: io_context_(io_context),
+		  acceptor_(io_context, tcp::endpoint(tcp::v4(), port))
 {
-	this->server_.setConnectionCallback(
-	        std::bind(&dataManagerServer::DataManagerTCPServer::onConnection, this, std::placeholders::_1)
-	);
-	//this->server_.setMessageCallback(
-	//		std::bind(&dataManagerServer::DataManagerTCPServer::onMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)
-	//);
-	server_.start();
-	std::cout << "Start accept connection to data manager on port " << listenAddr.toPort() << std::endl;
+		this->startAccept();
+		std::cout << "Start accept connection to data manager on port " << port << std::endl;
+}
+
+void dataManagerServer::DataManagerTCPServer::startAccept()
+{
+	TCPConnection::pointer new_connection = TCPConnection::create(io_context_);
+	this->acceptor_.async_accept(new_connection->socket(),
+			boost::bind(&DataManagerTCPServer::handleAccept, this, new_connection,
+					boost::asio::placeholders::error));
 }
 
 bool dataManagerServer::DataManagerTCPServer::Status()
@@ -29,21 +33,19 @@ bool dataManagerServer::DataManagerTCPServer::Status()
 	// return this->acceptor_.is_open() && this->io_context_.stopped();
 }
 
-void dataManagerServer::DataManagerTCPServer::onConnection(const muduo::net::TcpConnectionPtr& conn)
+void dataManagerServer::DataManagerTCPServer::handleAccept(dataManagerServer::TCPConnection::pointer new_connection, const boost::system::error_code& error)
 {
-	if(conn->connected()) {
-		dataManagerServer::TCPConnection* connectionElement = new dataManagerServer::TCPConnection();
-		conn->setMessageCallback(
-				std::bind(&dataManagerServer::TCPConnection::onMessage, connectionElement, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)
-		);
-	} else {
-		// TODO: manage TCP connection removal
-		std::cout << "Connection from " << conn->peerAddress().toIpPort() << " is " << (conn->connected() ? "UP" : "DOWN") << std::endl;
+	if (!error)
+	{
+		new_connection->start();
 	}
+
+	this->startAccept();
 }
 
 void dataManagerServer::DataManagerTCPServer::Stop()
 {
+	this->acceptor_.close();
 	int waitCounter = 0;
 	session::SessionsManager* instance = session::SessionsManager::getInstance();
 	bool noMoreActiveSession = false;
@@ -60,12 +62,12 @@ void dataManagerServer::DataManagerTCPServer::Stop()
 				lastMessage = currentTime;
 			}
 			waitCounter += WAIT_INTERVAL;
-			std::this_thread::sleep_for(std::chrono::milliseconds(WAIT_INTERVAL));
+			boost::this_thread::sleep(boost::posix_time::milliseconds(WAIT_INTERVAL));
 		}
 	}
+	this->io_context_.stop();
 	if(noMoreActiveSession == false) {
 		std::cout << "Graceful stop impossible, server killed" << std::endl;
 	}
-	//this->loop_->quit();
 	std::cout << "Server stopped" << std::endl;
 }

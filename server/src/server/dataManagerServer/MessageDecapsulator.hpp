@@ -50,7 +50,6 @@ private:
 
 	dataManager::protocol::MainMessage mainMessage;
 	dataManager::protocol::DataMessage dataMessage;
-	dataManager::protocol::DataMessageResponse dataMessageResponse;
 
 	bool ValidateInitMessage(dataManager::protocol::InitMessage& initMessage);
 	bool InitSessionAndClient(dataManager::protocol::InitMessage& initMessage);

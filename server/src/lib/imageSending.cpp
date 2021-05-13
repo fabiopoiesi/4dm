@@ -5,7 +5,7 @@
  *      Author: mbortolon
  */
 
-#define __DBG_INFO 1
+// #define __DBG_INFO 1
 #define __SAVE_AS_FILE_FOR_DBG 1
 // #define __CHECK_ACCESS_ERROR 1
 // #define __PRINT_FUNCTION_CALL 1
@@ -25,6 +25,7 @@
 #include <sys/socket.h>
 #include <stdlib.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <string.h>
 #include <arpa/inet.h>
 #include <sys/ioctl.h>
@@ -46,8 +47,6 @@
 #include "src/common/dataManager/protocol/DataMessage.pb.h"
 #include "src/common/dataManager/protocol/EndMessage.pb.h"
 
-#include "src/common/dataManager/md5.h"
-
 #include "opencv2/core.hpp"
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/imgproc.hpp"
@@ -60,7 +59,7 @@
 #define PACKET_MAX_SIZE 30000
 #define APPLICATION_ID "a"
 #define INIT_BYTES ""
-#define SERVER_MAX_PACKET_SIZE 300000
+#define SERVER_MAX_PACKET_SIZE 400000
 
 #define NET_SOFTERROR -1
 #define NET_HARDERROR -2
@@ -93,10 +92,6 @@ namespace ImageSending {
 		std::string imageSavePath;
 #endif
 	} sendingState;
-
-	typedef struct {
-
-	}
 
 	std::vector<sendingState> container;
 
@@ -191,9 +186,6 @@ namespace ImageSending {
 		}
 		uint32_t size_net = htonl((uint32_t) size);
 		std::memcpy(firstPacketBuffer, &size_net, sizeof(uint32_t));
-
-
-
 		unsigned long int byteToSend = std::min<unsigned long int>(
 				PACKET_MAX_SIZE - sizeof(uint32_t), size);
 		std::memcpy(&firstPacketBuffer[sizeof(uint32_t)], array, byteToSend);
@@ -274,6 +266,8 @@ namespace ImageSending {
 		inet_pton(AF_INET, container[position].serverIpAddress.c_str(), &serv_addr.sin_addr);
 
 		container[position].socket = socket(AF_INET, SOCK_STREAM, 0);
+		int flags = 1;
+		setsockopt(container[position].socket, IPPROTO_TCP, TCP_NODELAY, (void*)&flags, sizeof(flags));
 		connect(container[position].socket, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
 
 		if(isRejoin) {
@@ -459,16 +453,6 @@ namespace ImageSending {
 			dataMessage.set_frameid(item->frameId);
 			dataMessage.set_additionaldata(*item->additionalData);
 			dataMessage.set_data(item->frame->data(), item->frame->size());
-			MD5 md5;
-			char* hash = md5.digestMemory(item->frame->data(), item->frame->size());
-			dataMessage.set_datahash(hash, 16);
-#ifdef __DBG_INFO
-			std::cout << "Calculate hash is: [";
-			for(int i = 0; i < 16; i++) {
-				std::cout << hash[i] << " ";
-			}
-			std::cout << "]" << std::endl;
-#endif
 
 #ifdef __DBG_INFO
 			unsigned char* dataPointer = item->frame->data();
@@ -598,8 +582,6 @@ namespace ImageSending {
 				delete imageBuffer;
 				return false;
 			}
-
-			// std::cout << "Image buffer is: " << imageBuffer->size() << std::endl;
 
 #ifdef __SAVE_AS_FILE_FOR_DBG
 			std::ostringstream jpegFilename;

@@ -11,7 +11,6 @@ cc_library(
         "//src/server/dataManagerServer:DataManagerTCPServer",
         "//3rdparty:boost_thread",
         "//3rdparty:boost_asio",
-        "@muduo//muduo/net",
     ],
 )
 
@@ -39,13 +38,4 @@ container_push(
     registry = "gitlab-registry.fbk.eu",
     repository = "mbortolon/datamanager",
     tag = "latest",
-)
-
-container_push(
-    name = "data-manager-publish-muduo",
-    image=":data-manager-image",
-    format = "Docker",
-    registry = "gitlab-registry.fbk.eu",
-    repository = "mbortolon/datamanager",
-    tag = "muduo",
 )

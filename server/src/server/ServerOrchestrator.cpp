@@ -7,9 +7,6 @@
 #include "boost/asio.hpp"
 #include "boost/thread.hpp"
 
-#include "muduo/net/EventLoop.h"
-#include "muduo/net/InetAddress.h"
-
 #define STARTUP_TRY 2000
 #define WAIT_INTERVAL 10
 
@@ -41,11 +38,10 @@ int ServerOrchestrator::performanceServerThreadFunction() {
 }
 
 int ServerOrchestrator::dataManagerTCPServerThreadFunction() {
-	muduo::net::EventLoop loop;
-	muduo::net::InetAddress listenAddr(5960);
-	this->dataManagerServerInstance = new dataManagerServer::DataManagerTCPServer(&loop, listenAddr);
+	boost::asio::io_context io_context;
+	this->dataManagerServerInstance = new dataManagerServer::DataManagerTCPServer(io_context, 5960);
 	this->threadDataManagerStarted = true;
-	loop.loop();
+	io_context.run();
 	return 0;
 }
 

@@ -1,7 +1,7 @@
 run{::options parse_block_html="true" /}
 # Build instruction
 ## Requirements
-- Bazel >= 25.2
+- Bazel == 25.2
 - GCC >= 7.4.0
 - Docker Client >= 18.09 (API Version: 1.39)
 - Docker Server >= 18.09.6 (API Version: 1.39)

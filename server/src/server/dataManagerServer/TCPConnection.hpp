@@ -1,26 +1,41 @@
 #ifndef SRC_DATAMANAGERSERVER_TCPCONNECTION_HPP_
 #define SRC_DATAMANAGERSERVER_TCPCONNECTION_HPP_
 
-#include "muduo/net/TcpServer.h"
-#include "MessageDecapsulator.hpp"
-#include "src/common/dataManager/encapsulation/Decapsulator.hpp"
-#include "src/common/dataManager/encapsulation/Encapsulator.hpp"
+#include <iostream>
+#include <string>
 
-#define MESSAGE_MAX_SIZE 300000
+#include "boost/asio.hpp"
+#include "boost/shared_ptr.hpp"
+#include "boost/enable_shared_from_this.hpp"
+#include "MessageDecapsulator.hpp"
+
+#define MESSAGE_MAX_SIZE 400000
+#define TCP_BUFFER_SIZE 128000
 #define DATA_MANAGER_RESPONSE_MESSAGES_SIZE 2000
+
+using boost::asio::ip::tcp;
 
 namespace dataManagerServer {
 
-class TCPConnection {
+class TCPConnection : public boost::enable_shared_from_this<TCPConnection> {
 public:
-	TCPConnection();
+	typedef boost::shared_ptr<TCPConnection> pointer;
+
+	static pointer create(boost::asio::io_context& io_context);
+
+	tcp::socket& socket();
+
+	void start();
+
 	virtual ~TCPConnection();
 
-	void onMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp time);
-
-	void connectionClose();
-
 private:
+	tcp::socket socket_;
+	enum {
+		maxLength = TCP_BUFFER_SIZE,
+	};
+	char dataBuffer[maxLength];
+
 	char protocolMessage[MESSAGE_MAX_SIZE];
 	char responseBuffer[DATA_MANAGER_RESPONSE_MESSAGES_SIZE];
 	size_t messageToReceive = 0;
@@ -28,16 +43,17 @@ private:
 	bool messageDiscarded = false;
 	size_t messageSize = 0;
 
-	MessageDecapsulator* messageDecapsulator;
+	TCPConnection(boost::asio::io_context& io_context);
 
-	dataManagerServer::encapsulation::Decapsulator* lowProtocolDecapsulator;
-	dataManagerServer::encapsulation::Encapsulator* endProtocolEncapsulator;
+	void continuousReading();
 
-	muduo::net::TcpConnectionPtr connection;
+	void handleReadBytes(const boost::system::error_code& error, size_t bytes_transferred);
 
-	void onTooLargeMessage();
+	void handleWrite(const boost::system::error_code& error, size_t bytes_transferred);
 
-	void onMessageCallback(const void* buffer, size_t bufferSize);
+	void parseFrame(size_t bytes_transferred);
+
+	MessageDecapsulator* decapsulator;
 };
 
 }

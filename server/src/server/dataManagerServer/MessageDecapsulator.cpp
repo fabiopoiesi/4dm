@@ -14,13 +14,11 @@
 #include "src/common/dataManager/protocol/InitMessage.pb.h"
 #include "session/SessionsManager.hpp"
 #include "src/common/dataManager/frameContainer/Frame.hpp"
-#include "src/common/dataManager/md5.h"
 
 #include <streambuf>
 #include <iostream>
 #include <istream>
 #include <ostream>
-#include <cstring>
 #include "boost/filesystem.hpp"
 
 namespace dataManagerServer {
@@ -211,26 +209,6 @@ MessageDecapsulator::Response MessageDecapsulator::ElaborateDataMessage() {
 
 	std::string* additionalData = new std::string(this->dataMessage.additionaldata());
 	std::string* frameEncoded = new std::string(this->dataMessage.data());
-	std::string* hashFrameEncoded = new std::string(this->dataMessage.datahash());
-
-	MD5 md5;
-	char* hash = md5.digestMemory((unsigned char*)(frameEncoded->c_str()), frameEncoded->size());
-#ifdef __DBG_INFO
-	std::cout << "Server calculate hash is: [";
-	for(int i = 0; i < 16; i++) {
-		std::cout << hash[i] << " ";
-	}
-	std::cout << "]" << std::endl;
-#endif
-	if(std::memcmp(hash, hashFrameEncoded->c_str(), 16) != 0) {
-		//TODO: send a message that hash is wrong
-		std::cout << "Message with wrong hash, retransmission required" << std::endl;
-		this->dataMessageResponse.Clear();
-		this->dataMessageResponse.set_status(0);
-
-		this->mainMessage.Clear();
-		this->dataMessage.Clear();
-	}
 
 #ifdef __DBG_INFO
 	const char* dataPointer = frameEncoded->data();
