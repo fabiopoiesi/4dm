@@ -129,7 +129,6 @@ container_pull(
     registry = "docker.io",
     repository = "library/ubuntu",
     tag = "focal",
-    digest = "sha256:86ac87f73641c920fb42cc9612d4fb57b5626b56ea2a19b894d0673fd5b4f2e9",
 )
 
 # NDK rule

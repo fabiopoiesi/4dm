@@ -27,13 +27,19 @@ cc_binary(
     ],
 )
 
-container_image(
+cc_image(
     name = "data-manager-image",
     base = "@official_ubuntu//image",
-    files = [":data-manager"],
-    entrypoint = ["/data-manager"],
-    cmd = ["/data-manager"],
+    binary = ":data-manager",
 )
+
+# container_image(
+#     name = "data-manager-image",
+#     base = "@official_ubuntu//image",
+#     files = [":data-manager"],
+#     entrypoint = ["/data-manager"],
+#     cmd = ["/data-manager"],
+# )
 
 container_push(
     name = "data-manager-publish",
