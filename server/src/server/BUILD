@@ -1,5 +1,7 @@
 load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
 load("@io_bazel_rules_docker//container:container.bzl", "container_push")
+load("@io_bazel_rules_docker//container:container.bzl", "container_image")
+
 
 cc_library(
     name = "ServerOrchestrator",
@@ -25,10 +27,12 @@ cc_binary(
     ],
 )
 
-cc_image(
+container_image(
     name = "data-manager-image",
-    binary = ":data-manager",
     base = "@official_ubuntu//image",
+    files = [":data-manager"],
+    entrypoint = ["/data-manager"],
+    cmd = ["/data-manager"],
 )
 
 container_push(
