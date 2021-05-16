@@ -26,7 +26,3 @@ The result should be similar to:
 CONTAINER ID   IMAGE               COMMAND           CREATED          STATUS          PORTS                                                           NAMES
 faa8b166760e   data-manager:v0.8   "/data-manager"   40 seconds ago   Up 39 seconds   0.0.0.0:5959-5960->5959-5960/tcp, :::5959-5960->5959-5960/tcp   exciting_matsumoto
 ```
-
-## As binary
-
-In progress
