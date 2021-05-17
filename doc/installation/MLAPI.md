@@ -28,3 +28,19 @@ The result should be similar to:
 CONTAINER ID   IMAGE               COMMAND          CREATED         STATUS         PORTS     NAMES
 1f7db64c6208   mlapi-docker:v0.8   "./mlapiRelay"   7 seconds ago   Up 6 seconds             fervent_banzai
 ```
+
+## Build docker image from source
+
+Running in this mode require that Docker is installed, to install it please follow the [Docker documentation](https://docs.docker.com/engine/install/). This modality was tested both on macOS Catalina and Ubuntu 20.04 Focal.
+
+If not already done, download the source code of the repository using:
+
+```bash
+git clone git@github.com:fabiopoiesi/4dm.git
+```
+
+Access the subdirectory that contain the dockerize version of MLAPI and build the image:
+```bash
+cd mlapi-server
+docker sudo build -t mlapi-docker:v0.8 .
+```
