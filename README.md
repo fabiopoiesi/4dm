@@ -7,9 +7,9 @@ Our system can harvest frames and mobile poses in real time using a decentralise
 We show the effectiveness of our system by employing it for 3D skeleton and volumetric reconstructions. 
 Our triggering strategy achieves equal performance to that of an NTP-based synchronisation approach, but offers higher flexibility, as it can be adjusted online based on application needs.
 
-[Paper (arxiv pdf)](https://arxiv.org/pdf/2103.07883.pdf)
+[Paper (pdf)](https://arxiv.org/pdf/2103.07883.pdf)
 
-<p align="center"><img src="assets/teaser.png" width="650"></p>
+<p align="center"><img src="assets/teaser.png" width="600"></p>
 
 ## Source code
 
