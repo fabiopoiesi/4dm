@@ -1,17 +1,5 @@
 # Multi-view data capture for dynamic object reconstruction using handheld augmented reality mobiles
 
-## Components
-
-The 4DFY project can be divided into three main components:
-
-- Android application: You can find the code and the instruction to compile it on the ```app``` folder
-- Frame processing server: Code and installation instruction can be found in ```server```
-
-- Preprocessing examples: You can find the code of the pre-processing used to evaluate the system
-
-## Getting started
-
-Please check the [documentation](doc/DOC.md)
 =======
 This repository contains a system to capture nearly-synchronous frame streams from multiple and moving handheld mobiles that is suitable for dynamic object 3D reconstruction. 
 Each mobile executes Simultaneous Localisation and Mapping (SLAM) on-board to estimate its pose, and uses a wireless communication channel to send or receive synchronisation triggers.
@@ -24,10 +12,18 @@ Our triggering strategy achieves equal performance to that of an NTP-based synch
 
 <p align="center"><img src="assets/teaser.png" width="600"></p>
 
-## Source code
+## Components
 
-Coming soon ...
->>>>>>> 845b951ace8dc184efafc2e82e3e5a4f6453ccf7
+The 4DFY project can be divided into three main components:
+
+- Android application: You can find the code and the instruction to compile it on the ```app``` folder
+- Frame processing server: Code and installation instruction can be found in ```server```
+
+- Preprocessing examples: You can find the code of the pre-processing used to evaluate the system
+
+## Getting started
+
+Please check the [documentation](doc/DOC.md)
 
 ## The 4DM dataset
 
