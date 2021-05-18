@@ -1,6 +1,6 @@
 # data-manager installation
 
-## Prebuilt Docker Image (recommended way)
+## Prebuilt Docker image (recommended way)
 
 This modality requires Docker on our OS. 
 To install it follow the [Docker documentation](https://docs.docker.com/engine/install/). 
