@@ -35,7 +35,7 @@ CONTAINER ID   IMAGE               COMMAND          CREATED         STATUS      
 1f7db64c6208   mlapi-docker:v0.8   "./mlapiRelay"   7 seconds ago   Up 6 seconds             fervent_banzai
 ```
 
-## Build docker image from source
+## Build Docker image from source
 
 Download the source code of the repository using:
 
