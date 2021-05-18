@@ -16,7 +16,7 @@ Our triggering strategy achieves equal performance to that of an NTP-based synch
 This project is divided into two software blocks, the capturing system and the reconstruction software, which in turn are composed on several modules.
 Specifically,
 
-- ```app``` that includes the *Android application* to capture the frames
+- ```app``` that includes the Android ARCore-based mobile application to capture the frames
 - ```data-manager``` that includes the server to process the captured frames
 - ```mlapi-server``` that includes the server to manage synchronision and enrolments of the mobiles
 - ```reconstruction_sw``` that includes the scripts to perform 3D pose and volumetric reconstructions using the captured data
