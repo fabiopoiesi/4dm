@@ -33,7 +33,7 @@ CONTAINER ID   IMAGE               COMMAND           CREATED          STATUS    
 faa8b166760e   data-manager:v0.8   "/data-manager"   40 seconds ago   Up 39 seconds   0.0.0.0:5959-5960->5959-5960/tcp, :::5959-5960->5959-5960/tcp   exciting_matsumoto
 ```
 
-## Build docker image from source
+## Build Docker image from source
 
 To executing this procedure it is necessary to install Bazel 4.0.0.
 It might work with older versions, but we do not guarantee this.
