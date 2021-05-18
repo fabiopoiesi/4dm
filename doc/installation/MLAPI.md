@@ -13,7 +13,7 @@ After extracting its content, you can install the mlapi-server image using the c
 docker load < [absolute path to extracted folder]/mlapi-docker.tar
 ```
 
-Then you can start the process using the command: 
+2) start the process using the command: 
 
 ```bash
 docker run -d -p 8889:8889 --network="host" mlapi-docker:v0.8
@@ -21,13 +21,13 @@ docker run -d -p 8889:8889 --network="host" mlapi-docker:v0.8
 
 It is necessary to set the network mode to ```host``` because the default mode hides the container behind a NAT and this makes impossible in the current state to correctly the slaves with the master, currently the binding is based on the IP address.
 
-You can check that everything works correctly with the command:
+3) check that it is all working correctly with the command:
 
 ```bash
 docker ps -a
 ```
 
-The result should be similar to:
+Here below what you should see as a result of the previous command:
 ```
 CONTAINER ID   IMAGE               COMMAND          CREATED         STATUS         PORTS     NAMES
 1f7db64c6208   mlapi-docker:v0.8   "./mlapiRelay"   7 seconds ago   Up 6 seconds             fervent_banzai
