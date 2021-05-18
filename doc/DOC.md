@@ -14,4 +14,5 @@ The capturing systems includes three modules and their respective documentation 
 
 ## Installation and usage reconstruction software
 
-The specific documentation for 3D pose and volumetric reconstruction can be found [here](https://github.com/mbortolon97/4dm/tree/main/reconstruction_sw).
+The specific documentation for 3D pose and volumetric reconstruction can be found in
+- [reconstruction_sw](https://github.com/mbortolon97/4dm/tree/main/reconstruction_sw).
