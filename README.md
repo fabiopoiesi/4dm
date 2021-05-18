@@ -13,14 +13,12 @@ Our triggering strategy achieves equal performance to that of an NTP-based synch
 
 ## Modules
 
-The 4DFY project can be divided into three main components:
+This project is divided into two software blocks, the capturing system and the reconstruction software. The main modules of this project are:
 
-- **Android application**: You can find the code in the ```app``` folder
-- **Frame processing server**: Code can be found in ```data-manager```
-- **MLAPI-server**: Code can be found in ```mlapi-server```
-
-
-- **Preprocessing examples**: You can find the code of the pre-processing used to evaluate the system
+- ```app``` that includes the *Android application* to capture the frames
+- ```data-manager``` that includes the server to process the captured frames
+- ```mlapi-server``` that includes the server to manage synchronision and enrolments of the mobiles
+- ```reconstruction_sw``` that includes the scripts to perform 3D pose and volumetric reconstructions using the captured data
 
 ## Getting started
 
