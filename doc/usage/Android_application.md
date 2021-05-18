@@ -2,11 +2,11 @@
 
 Once the application was installed, if you start you should see the main screen:
 
-<img src="img/main_page.jpg" height="400" alt="Main page of the Android application"/>
+<p align="center"><img src="img/main_page.jpg" height="400" alt="Main page of the Android application"/></p>
 
 On the top you can see the button that open the setting page:
 
-<img src="img/main_page_settings_highlight.jpg" height="400" alt="Main page of the Android application with highlighted the setting button on the top right"/>
+<p align="center"><img src="img/main_page_settings_highlight.jpg" height="400" alt="Main page of the Android application with highlighted the setting button on the top right"/></p>
 
 The first time it is necessary to set or regulate inside the settings of each phone that participate to the session, a series of parameters:
 
@@ -20,22 +20,22 @@ The first time it is necessary to set or regulate inside the settings of each ph
 
 Once you setup the paprameters, you can press the done button at the bottom of the screen.
 
-<img src="img/settings.jpg" height="400" alt="Settings page of the Android application"/>
+<p align="center"><img src="img/settings.jpg" height="400" alt="Settings page of the Android application"/></p>
 
 To create a new session the host need to press the plus sign on the bottom right:
 
-<img src="img/main_page_new_session_highlight.jpg" height="400" alt="Main page of the Android application with highlighted the new session button on the bottom right"/>
+<p align="center"><img src="img/main_page_new_session_highlight.jpg" height="400" alt="Main page of the Android application with highlighted the new session button on the bottom right"/></p>
 
 Now the other clients can join the created session using the ```join``` button, if the session is not shown it is possible to refresh the list using the button on bottom left
 
-<img src="img/main_page_refresh_highlight.jpg" height="400" alt="Main page of the Android application with highlighted the refresh list button on the bottom right"/>
+<p align="center"><img src="img/main_page_refresh_highlight.jpg" height="400" alt="Main page of the Android application with highlighted the refresh list button on the bottom right"/></p>
 
 Once inside the session each client start mapping the scene, once the scene is fully mapped and all the people are entered, the host can place the anchor by pressing to a plane.
 
 Once placed after few seconds the recording button will be shown on the screen.
 
-<img src="img/recording_started.jpg" height="400" alt="Example of the view before the recording started"/>
+<p align="center"><img src="img/recording_started.jpg" height="400" alt="Example of the view before the recording started"/></p>
 
 To end the recording the host must press the stop button
 
-<img src="img/recording_in_progress.jpg" height="400" alt="Example of the view with the stop button"/>
+<p align="center"><img src="img/recording_in_progress.jpg" height="400" alt="Example of the view with the stop button"/></p>
