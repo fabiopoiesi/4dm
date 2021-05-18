@@ -1,4 +1,4 @@
-# Android Application Installation
+# app installation
 
 ## Prebuilt APK (recommended way)
 
