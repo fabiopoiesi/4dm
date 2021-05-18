@@ -1,10 +1,10 @@
 # mlapi-server installation
 
-## Prebuilt Docker Image (recommended way)
-
 This modality requires Docker on your OS. 
 To install it follow the [Docker documentation](https://docs.docker.com/engine/install/). 
 This modality was tested both on macOS Catalina and Ubuntu 20.04 Focal.
+
+## Prebuilt Docker Image (recommended way)
 
 1) Download the latest ZIP from the [release page](https://github.com/fabiopoiesi/4dm/releases). 
 After extracting its content, you can install the mlapi-server image using the command:
@@ -35,15 +35,14 @@ CONTAINER ID   IMAGE               COMMAND          CREATED         STATUS      
 
 ## Build docker image from source
 
-Running in this mode require that Docker is installed, to install it please follow the [Docker documentation](https://docs.docker.com/engine/install/). This modality was tested both on macOS Catalina and Ubuntu 20.04 Focal.
-
-If not already done, download the source code of the repository using:
+Download the source code of the repository using:
 
 ```bash
 git clone git@github.com:fabiopoiesi/4dm.git
 ```
 
-Access the subdirectory that contain the dockerize version of MLAPI and build the image:
+Access the subdirectory that contains the dockerize version of mlapi-server and build the image:
+
 ```bash
 cd mlapi-server
 docker sudo build -t mlapi-docker:v0.8 .
