@@ -1,24 +1,28 @@
-# MLAPI Installation
+# mlapi-server installation
 
-## As a prebuilt Docker Image (recommended way)
+## Prebuilt Docker Image (recommended way)
 
-Running in this mode require that Docker is installed, to install it please follow the [Docker documentation](https://docs.docker.com/engine/install/). This modality was tested both on macOS Catalina and Ubuntu 20.04 Focal.
+Ths modality requires Docker on your OS. 
+To install it follow the [Docker documentation](https://docs.docker.com/engine/install/). 
+This modality was tested both on macOS Catalina and Ubuntu 20.04 Focal.
 
-First it is necessary to download from the [release page](https://github.com/fabiopoiesi/4dm/releases) the latest ZIP containing the Docker images and the APK. After extracting it, you can install the MLAPI image using the command:
+1) Download the latest ZIP from the [release page](https://github.com/fabiopoiesi/4dm/releases). 
+After extracting its content, you can install the mlapi-server image using the command:
 
 ```bash
 docker load < [absolute path to extracted folder]/mlapi-docker.tar
 ```
 
-Then you can start it using the command: 
+Then you can start the process using the command: 
 
 ```bash
 docker run -d -p 8889:8889 --network="host" mlapi-docker:v0.8
 ```
 
-It is necessary to set the network mode to ```host``` because the default mode hide the container behind a NAT and this make impossible in the current state to correctly the slaves with the master, currently the binding is based on the IP address.
+It is necessary to set the network mode to ```host``` because the default mode hides the container behind a NAT and this makes impossible in the current state to correctly the slaves with the master, currently the binding is based on the IP address.
 
-You can check that everything work correctly with the command:
+You can check that everything works correctly with the command:
+
 ```bash
 docker ps -a
 ```
