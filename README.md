@@ -1,6 +1,5 @@
 # Multi-view data capture for dynamic object reconstruction using handheld augmented reality mobiles
 
-<<<<<<< HEAD
 ## Components
 
 The 4DFY project can be divided into three main components:
