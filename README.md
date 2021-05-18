@@ -1,5 +1,6 @@
 # Multi-view data capture for dynamic object reconstruction using handheld augmented reality mobiles
 
+<<<<<<< HEAD
 ## Components
 
 The 4DFY project can be divided into three main components:
@@ -12,6 +13,22 @@ The 4DFY project can be divided into three main components:
 ## Getting started
 
 Please check the [documentation](doc/DOC.md)
+=======
+This repository contains a system to capture nearly-synchronous frame streams from multiple and moving handheld mobiles that is suitable for dynamic object 3D reconstruction. 
+Each mobile executes Simultaneous Localisation and Mapping (SLAM) on-board to estimate its pose, and uses a wireless communication channel to send or receive synchronisation triggers.
+We use the SLAM algorithm integrated in Android [ARCore](https://developers.google.com/ar).
+Our system can harvest frames and mobile poses in real time using a decentralised triggering strategy and a data-relay architecture that can be deployed either at the Edge or in the Cloud.
+We show the effectiveness of our system by employing it for 3D skeleton and volumetric reconstructions. 
+Our triggering strategy achieves equal performance to that of an NTP-based synchronisation approach, but offers higher flexibility, as it can be adjusted online based on application needs.
+
+[Paper (pdf)](https://arxiv.org/pdf/2103.07883.pdf)
+
+<p align="center"><img src="assets/teaser.png" width="600"></p>
+
+## Source code
+
+Coming soon ...
+>>>>>>> 845b951ace8dc184efafc2e82e3e5a4f6453ccf7
 
 ## The 4DM dataset
 
@@ -28,6 +45,22 @@ The 4DM dataset is characterised by cluttered backgrounds, cast shadows and peop
 - 4DM-Hard: all mobiles undergo motion
 
 The host mobile generates triggers at 10Hz. Frames have a resolution of 640x480 and an average size of about 160KB. The latency between mobiles and the Relay Server was about 5ms.
+
+## Citing our work
+
+Please cite the following paper if you use our code or our dataset:
+
+```latex
+@article{Bortolon2021,
+    title = {Multi-view data capture for dynamic object reconstruction using handheld augmented reality mobiles},
+    author = {Bortolon, Matteo and Bazzanella, Luca and Poiesi, Fabio},
+    journal = {Journal of Real-Time Image Processing},
+    volume = {18},
+    pages = {345–355},
+    month = {Mar},
+    year = {2021}
+}
+```
 
 ## Acknowledgements
 
