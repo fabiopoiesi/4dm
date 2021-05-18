@@ -25,3 +25,5 @@ Once you setup the paprameters, you can press the done button at the bottom of t
 To create a new session the host need to press the plus sign on the bottom right:
 
 ![Main page of the Android application with highlighted the new session button on the bottom right](img/main_page_new_session_highlight.jpg)
+
+Now the other clients can join the created session

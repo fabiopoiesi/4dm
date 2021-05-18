@@ -1,6 +1,5 @@
 # Multi-view data capture for dynamic object reconstruction using handheld augmented reality mobiles
 
-=======
 This repository contains a system to capture nearly-synchronous frame streams from multiple and moving handheld mobiles that is suitable for dynamic object 3D reconstruction. 
 Each mobile executes Simultaneous Localisation and Mapping (SLAM) on-board to estimate its pose, and uses a wireless communication channel to send or receive synchronisation triggers.
 We use the SLAM algorithm integrated in Android [ARCore](https://developers.google.com/ar).
@@ -12,12 +11,13 @@ Our triggering strategy achieves equal performance to that of an NTP-based synch
 
 <p align="center"><img src="assets/teaser.png" width="600"></p>
 
-## Components
+## Modules
 
 The 4DFY project can be divided into three main components:
 
 - Android application: You can find the code and the instruction to compile it on the ```app``` folder
 - Frame processing server: Code and installation instruction can be found in ```server```
+- MLAPI-server: Code and installation instruction can be found in ```mlapi-server```
 
 - Preprocessing examples: You can find the code of the pre-processing used to evaluate the system
 
