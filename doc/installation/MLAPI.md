@@ -2,7 +2,7 @@
 
 ## Prebuilt Docker Image (recommended way)
 
-Ths modality requires Docker on your OS. 
+This modality requires Docker on your OS. 
 To install it follow the [Docker documentation](https://docs.docker.com/engine/install/). 
 This modality was tested both on macOS Catalina and Ubuntu 20.04 Focal.
 
