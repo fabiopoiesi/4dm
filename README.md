@@ -15,11 +15,12 @@ Our triggering strategy achieves equal performance to that of an NTP-based synch
 
 The 4DFY project can be divided into three main components:
 
-- Android application: You can find the code and the instruction to compile it on the ```app``` folder
-- Frame processing server: Code and installation instruction can be found in ```data-manager```
-- MLAPI-server: Code and installation instruction can be found in ```mlapi-server```
+- **Android application**: You can find the code in the ```app``` folder
+- **Frame processing server**: Code can be found in ```data-manager```
+- **MLAPI-server**: Code can be found in ```mlapi-server```
 
-- Preprocessing examples: You can find the code of the pre-processing used to evaluate the system
+
+- **Preprocessing examples**: You can find the code of the pre-processing used to evaluate the system
 
 ## Getting started
 
