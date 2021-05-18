@@ -13,7 +13,8 @@ Our triggering strategy achieves equal performance to that of an NTP-based synch
 
 ## Modules
 
-This project is divided into two software blocks, the capturing system and the reconstruction software. The main modules of this project are:
+This project is divided into two software blocks, the capturing system and the reconstruction software, which in turn are composed on several modules.
+Specifically,
 
 - ```app``` that includes the *Android application* to capture the frames
 - ```data-manager``` that includes the server to process the captured frames
