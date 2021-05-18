@@ -29,8 +29,6 @@ Please check the [documentation](doc/DOC.md)
 
 <p align="center"><img src="assets/4dm_sample.png" width="1000"></p>
 
-[Download (zip)](https://drive.google.com/file/d/1AvkGph7TXxsxoqQXEVZErHHllutC4Ncc/view?usp=sharing)
-
 This is the 4DM dataset that involves six people recording with their mobiles a person acting table tennis in an outdoor setting.
 The 4DM dataset is characterised by cluttered backgrounds, cast shadows and people appearing in each other's view, thus becoming likely distractors for object detection and human pose estimation.
 
@@ -40,6 +38,8 @@ The 4DM dataset is characterised by cluttered backgrounds, cast shadows and peop
 - 4DM-Hard: all mobiles undergo motion
 
 The host mobile generates triggers at 10Hz. Frames have a resolution of 640x480 and an average size of about 160KB. The latency between mobiles and the Relay Server was about 5ms.
+
+[Download (zip)](https://drive.google.com/file/d/1AvkGph7TXxsxoqQXEVZErHHllutC4Ncc/view?usp=sharing)
 
 ## Citing our work
 
