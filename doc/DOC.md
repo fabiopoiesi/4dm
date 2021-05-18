@@ -6,10 +6,11 @@ The reconstruction software can be executed and tested with the data captured fo
 
 ## Installation and usage capturing system
 
-To install the three required component, follow the specific instructions [MLAPI](installation/MLAPI.md) [Data manager](installation/Data_Manager.md) and the [Android application](installation/Android_application.md)
+The capturing systems includes three modules and their respective documentation is listed below.
 
-The start of Data Manager and MLAPI is describe inside the installation process, and after this no further actions are required. 
-Instead [here](usage/Android_application.md) you can find a guide on how to use the Android application.
+- [app](installation/Android_application.md)
+- [mlapi-server](installation/MLAPI.md)
+- [data-manager](installation/Data_Manager.md)
 
 ## Installation and usage reconstruction software
 
