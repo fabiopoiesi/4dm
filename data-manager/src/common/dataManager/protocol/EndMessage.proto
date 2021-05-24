@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package dataManager.protocol;
+
+message EndMessage {
+	int64 totalAcquireFrames = 1;
+}

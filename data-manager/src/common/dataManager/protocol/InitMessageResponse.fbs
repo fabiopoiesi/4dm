@@ -1,0 +1,7 @@
+namespace dataManager.protocol;
+
+table InitMessageResponse {
+  streamID:string;
+}
+
+root_type InitMessageResponse;

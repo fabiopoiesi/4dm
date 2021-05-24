@@ -1,6 +1,6 @@
 # 3D pose and volumetric reconstruction
 
-Here we describe the procedure to execute our reconstruction algorithms.
+Here we describe the procedure to execute our reconstruction software.
 We did our best to keep the code self-contained.
 We provide pre-process data to reproduce our results.
 The directory should have the following structure after downloading and extracting 2D skeleton and silhouette data:

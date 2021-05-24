@@ -1,0 +1,44 @@
+namespace dataManager.protocol;
+
+// Init message
+
+enum ContentCodec:byte { MJPEG = 0; H264 = 1; H265 = 2; VP9 = 3; AV0 = 4; }
+
+table InitMessage {
+  applicationID:string;
+  streamID:string;
+  clients:string;
+  phoneId:string;
+  contentCodec:ContentCodec = MJPEG;
+  initBytes:[ubyte];
+  additionalBytes:[ubyte];
+  initAdditionalData:[ubyte];
+  rejoin:bool;
+}
+
+// Data message
+
+table DataMessage {
+  frameId:ulong;
+  additionalData:[ubyte];
+  data:[ubyte];
+}
+
+// End message
+
+table EndMessage {
+  totalAcquireFrames:ulong;
+  additionalData:[ubyte];
+}
+
+// MessageType
+
+enum MessageType:byte { Init = 0, Data = 1, End = 2 }
+
+union MessagesUnion { InitMessage, DataMessage, EndMessage }
+
+table MainMessage {
+  message:MessagesUnion;
+}
+
+root_type MainMessage;

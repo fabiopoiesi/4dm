@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package dataManager.protocol;
+
+message DataMessage {
+	uint64 frameId = 1;
+	bytes additionalData = 2;
+	bytes data = 3;
+}
