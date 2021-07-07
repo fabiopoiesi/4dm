@@ -3,6 +3,7 @@ import numpy as np
 import os
 import json
 import quaternion as quat
+import utils
 
 ###################################################
 ############### MAIN
@@ -148,7 +149,7 @@ for mf in files:
         if c > 0:
             [vis.remove_geometry(l) for l in mobile_captures[mobile_number]['frustum']]
         frustum_to_viz = []
-        line_mesh = LineMesh(mobile_pose_world, mobile_viz_lines, mobile_viz_colors, radius=0.02)
+        line_mesh = utils.LineMesh(mobile_pose_world, mobile_viz_lines, mobile_viz_colors, radius=0.02)
         line_mesh_geoms = line_mesh.cylinder_segments
         mobile_captures[mobile_number]['frustum'] = line_mesh_geoms
         [vis.add_geometry(l) for l in mobile_captures[mobile_number]['frustum']]
